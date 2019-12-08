@@ -1,0 +1,33 @@
+extends ../layouts/common.pug
+block content
+	
+	h1 Products 
+	.d-flex.align-items-center
+		a.btn.btn-danger.mb-5.ml-3.mt-3(href="/product/add") Add product
+
+		form.ml-auto.d-flex(action="/product/search", method="GET")
+			input(type="text", name="q", class="form-control" "form-control-sm")
+			button(class="btn btn-primary ml-2") Search
+
+	.row
+		each product in products
+			.col-md-3
+				.card.mt-5(style='width: 15rem;')
+					img.card-img-top(src=product.image)
+					.card-body
+						h5.card-title=product.name
+						p.card-text=product.description
+						a.btn.btn-primary(href='/cart/add/'+product.id) Add to cart
+
+
+
+	nav.mt-5(aria-label='Page navigation example')
+		ul.pagination.justify-content-center
+			li.page-item
+				a.page-link(href='/product/' + previous) Previous
+			each val in pageNumber
+				li.page-item
+					a.page-link(href='/product/' + parseInt(val)) #{val} 
+			li.page-item
+				a.page-link(href='/product/' + next) Next
+

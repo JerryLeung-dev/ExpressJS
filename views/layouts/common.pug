@@ -1,0 +1,28 @@
+html
+	head
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	body
+		nav.navbar.navbar-light.bg-light.justify-content-start
+			a.navbar-brand(href='#') 
+				img.d-inline-block.align-top(src='/images/logo.png', width='30', height='30', alt='')
+			span(class="text-danger") |		CodersX
+
+			ul.nav.justify-content-start.ml-2
+				li.nav-item
+					a.nav-link.active(href='/') Home
+				li.nav-item
+					a.nav-link(href='/users') Users
+				li.nav-item
+					a.nav-link(href='/product') Products
+				li.nav-item
+					a.nav-link(href='/transfer/create') Transfer
+			if(user)
+				p.ml-5.mt-3= user.name
+
+			p.ml-6.mt-3
+				.text-success.font-weight-bolder.pl-20.pr-30 Cart
+				span &nbsp;&nbsp;
+				span.text-success=sum || 0
+	
+		.container.pt-5
+				block content

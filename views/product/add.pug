@@ -1,0 +1,18 @@
+extends ../layouts/common.pug
+block content
+
+	h1 Add product
+
+	form(action="/product/add", method="POST")
+		.form-group
+			label(for="name") Name 
+			input#name.form-control(type="text", name="name",value= values?values.name:'')
+		.form-group
+			label(for="description") Description
+			input#description.form-control(type="text",name="description",value= values?values.description:'')
+		.form-group
+			label(for="price") Price
+			input#price.form-control(type="text", name="price",value=values?values.price:'')
+
+		button.btn.btn-primary Add
+
